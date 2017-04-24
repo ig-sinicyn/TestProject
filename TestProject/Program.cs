@@ -10,7 +10,8 @@ namespace TestProject
 	{
 		static void Main(string[] args)
 		{
-			Console.WriteLine("Hello!");
+			Task1.Run();
+			Task2.Run();
 		}
 	}
 }
