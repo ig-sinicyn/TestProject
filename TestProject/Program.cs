@@ -10,8 +10,14 @@ namespace TestProject
 	{
 		static void Main(string[] args)
 		{
+			Console.WriteLine("===  Task 1 ===");
 			Task1.Run();
+
+			Console.WriteLine();
+			Console.WriteLine("===  Task 2 ===");
 			Task2.Run();
+
+			Console.ReadKey();
 		}
 	}
 }

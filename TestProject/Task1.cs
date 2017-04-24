@@ -63,24 +63,8 @@ namespace TestProject
 		{
 			return GetEnumerator();
 		}
+
 		public void ReverseInplace()
-		{
-			if (First == null) return;
-
-			var current = First;
-			First = default(ListNode<T>); // current last item
-			while (current.Next != null)
-			{
-				Last = current.Next;      // save ref to next
-				current.Next = First;     // current.Next = prev last item
-				First = current;          // update last item
-				current = Last;           // restore ref to next
-			}
-
-			//Last = First;
-		}
-
-		public void ReverseInplace2()
 		{
 			if (First == null) return;
 
@@ -98,6 +82,23 @@ namespace TestProject
 
 			Last = First;
 			First = prev;
+		}
+
+		public void ReverseInplaceOptinizedNotReady()
+		{
+			if (First == null) return;
+
+			var current = First;
+			First = default(ListNode<T>); // current last item
+			while (current.Next != null)
+			{
+				Last = current.Next;      // save ref to next
+				current.Next = First;     // current.Next = prev last item
+				First = current;          // update last item
+				current = Last;           // restore ref to next
+			}
+
+			//Last = First;
 		}
 	}
 

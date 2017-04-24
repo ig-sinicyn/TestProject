@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Net.NetworkInformation;
 
 namespace TestProject
 {
@@ -19,12 +20,19 @@ namespace TestProject
 
 			Console.WriteLine("List (after remove): " + string.Join(", ", data));
 
+			int x1, x2;
+			GetTwoMissing(data.ToArray(), min, count, out x1, out x2);
 
+			Console.WriteLine("N1: " + x1);
+			Console.WriteLine("N2: " + x2);
+		}
+
+		public static void GetTwoMissing(int[] data, int min, int count, out int x1, out int x2)
+		{
 			var sum = data.Sum();
 			var max = min + count - 1;
 			// s = (min + max) / 2 * n
 			var expectedSum = (min + max) * count / 2;
-			Console.WriteLine("Missing sum: " + (expectedSum - sum));
 
 			var middle = (expectedSum - sum) / 2;
 
@@ -34,16 +42,9 @@ namespace TestProject
 			var max1 = middle;
 			var count1 = max1 - min1 + 1;
 			var expectedSum1 = (min1 + max1) * count1 / 2;
-			Console.WriteLine("N1: " + (expectedSum1 - sum1));
 
-			var data2 = data.Where(i => i > middle);
-			var sum2 = data2.Sum();
-			var min2 = middle+1;
-			var max2 = max;
-			var count2 = max2 - min2 + 1;
-			var expectedSum2 = (min2 + max2) * count2 / 2;
-			Console.WriteLine("N2: " + (expectedSum2 - sum2));
-
+			x1 = expectedSum1 - sum1;
+			x2 = (expectedSum - sum) - x1;
 		}
 	}
 }
