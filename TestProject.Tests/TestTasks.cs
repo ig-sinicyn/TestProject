@@ -34,6 +34,21 @@ namespace TestProject.Tests
 			Task2.GetTwoMissing(data, 0, 4, out x1, out x2);
 			Assert.AreEqual(x1, 0);
 			Assert.AreEqual(x2, 3);
+
+			data = new[] { 3, 2 };
+			Task2.GetTwoMissing(data, 0, 4, out x1, out x2);
+			Assert.AreEqual(x1, 0);
+			Assert.AreEqual(x2, 1);
+
+			data = new[] { 1, 0 };
+			Task2.GetTwoMissing(data, 0, 4, out x1, out x2);
+			Assert.AreEqual(x1, 2);
+			Assert.AreEqual(x2, 3);
+
+			data = new[] { 1, 2, 3, 5 };
+			Task2.GetTwoMissing(data, 0, 6, out x1, out x2);
+			Assert.AreEqual(x1, 0);
+			Assert.AreEqual(x2, 4);
 		}
 	}
 }
